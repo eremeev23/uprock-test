@@ -34,7 +34,8 @@ export default [
       context.json({
         id: 23115,
         email: "testuser@icloud.com",
-        password: "123456"
+        password: "123456",
+        username: "Username"
       })
     )
   })
