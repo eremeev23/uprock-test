@@ -7,6 +7,7 @@
       :type="inputData.type ? inputType : 'text'"
       :id="inputData.id"
       :name="inputData.name"
+      autocomplete="off"
     />
     <label :for="inputData.id" class="input-block__label">
       {{ inputData.placeholder }}
@@ -97,12 +98,46 @@ export default {
   watch: {
     trigger() {
       this.valid = false;
+    },
+
+    value() {
+
     }
   },
 
   methods: {
     toggleInputType() {
       this.inputType ? this.inputType = null : this.inputType = 'password'
+    }
+  },
+
+  mounted() {
+    switch (this.inputData.type) {
+      case 'email':
+        this.$emit('input', this.value);
+        if (/.+@.+\..+/i.test(this.value)) {
+          this.error = null;
+          this.valid = true;
+        } else if (this.value.length) {
+          this.valid = true;
+          this.error = 'Incorrect email'
+        } else {
+          this.valid = false;
+          this.error = 'Incorrect email'
+        }
+        break;
+      case 'password':
+        this.$emit('input', this.value);
+        if (this.value.trim().length > 5) {
+          this.error = null;
+          this.valid = true;
+        } else if (this.value.length) {
+          this.valid = true;
+          this.error = 'Password must be not less than 6 symbols'
+        } else {
+          this.valid = false;
+          this.error = 'Password must be not less than 6 symbols'
+        }
     }
   }
 }

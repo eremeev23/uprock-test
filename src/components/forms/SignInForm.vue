@@ -10,6 +10,7 @@
       v-model="formData[input.name]"
       :input-data="input"
       :trigger="trigger"
+      :value="formData[input.name]"
     />
     <SubmitButton :disabled="!formValid"/>
   </form>
@@ -87,15 +88,6 @@ export default {
       }
     }
   },
-
-  mounted() {
-    // this.$modal.show(ErrorModal, {
-    //   text: 'The email address or password is incorrect.',
-    // }, {
-    //   height: 200,
-    //   width: 400
-    // })
-  }
 }
 </script>
 
