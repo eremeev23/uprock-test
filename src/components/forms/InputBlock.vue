@@ -99,10 +99,6 @@ export default {
     trigger() {
       this.valid = false;
     },
-
-    value() {
-
-    }
   },
 
   methods: {
