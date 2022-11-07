@@ -117,9 +117,6 @@ export default {
         } else if (this.value.length) {
           this.valid = true;
           this.error = 'Incorrect email'
-        } else {
-          this.valid = false;
-          this.error = 'Incorrect email'
         }
         break;
       case 'password':
@@ -129,9 +126,6 @@ export default {
           this.valid = true;
         } else if (this.value.length) {
           this.valid = true;
-          this.error = 'Password must be not less than 6 symbols'
-        } else {
-          this.valid = false;
           this.error = 'Password must be not less than 6 symbols'
         }
     }
